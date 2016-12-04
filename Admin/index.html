@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>学IT - 后台管理系统</title>
+	<link rel="stylesheet" href="./bower_components/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" href="./bower_components/font-awesome/css/font-awesome.css">
+	<!-- <link rel="stylesheet" href="xx.css"> -->
+	<link rel="stylesheet/less" href="./public/less/index.less">
+	<script src="./public/js/less.js"></script>
+</head>
+<body>
+	 
+	 <div class="wrapper">
+	 	
+		<!-- 导航 -->
+		<div class="navs">
+			<!--个人资料-->
+			<div class="profile">
+				<div class="avatar">
+					<img src="./public/images/monkey.png" alt="">
+				</div>
+				<h5>令狐冲</h5>
+			</div>
+			<!--nav-->
+			<div class="nav">
+				<ul class="list-unstyled">
+					<li>
+						<a href="javascript:;">
+							<i class="fa fa-photo"></i>
+							仪表盘
+						</a>
+					</li>
+					<li>
+						<a href="javascript:;">
+							<i class="fa fa-photo"></i>
+							课程管理
+							<i class="caret pull-right"></i>
+						</a>
+						<ul class="list-unstyled">
+							<li><a href="javascript:;">课程添加</a></li>
+							<li><a href="javascript:;">课程添加</a></li>
+							<li><a href="javascript:;">课程添加</a></li>
+							<li><a href="javascript:;">课程添加</a></li>
+						</ul>
+					</li>
+					<li>
+						<a href="javascript:;">
+							<i class="fa fa-photo"></i>
+							仪表盘
+						</a>
+					</li>
+					<li>
+						<a href="javascript:;">
+							<i class="fa fa-photo"></i>
+							仪表盘
+						</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- 主体 -->
+		<div class="main">
+			<!-- 头部 -->
+			<div class="header">
+				<nav class="navbar navbar-custom" role="navigation">
+					<div class="container-fluid">
+						<div class="navbar-header">
+							<a class="navbar-brand" href="javascript:;">
+								<i class="fa fa-navicon"></i>
+							</a>
+						</div>
+						<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+							<ul class="nav navbar-nav navbar-right">
+								<li>
+									<a href="#" class="fa fa-user-o">
+									个人中心
+									</a>
+								</li>
+								<li>
+									<a href="#" class="fa fa-sign-out">
+									退出
+									</a>
+								</li>
+								<li>
+									<a href="#" class="fa fa-tasks"></a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</nav>
+			</div>
+			<!--面包屑导航-->
+			<ol class="breadcrumb">
+				<li><a href="#">Home</a></li>
+				<li><a href="#">2013</a></li>
+				<li class="active">十一月</li>
+			</ol>
+		</div>
+
+	 </div>
+	
+	<script src="./bower_components/jquery/dist/jquery.js"></script>
+	<script src="./bower_components/bootstrap/dist/js/bootstrap.js"></script>
+	<script>
+		
+		$('.nav a').on('click', function () {
+
+			var _this = $(this);
+
+			var next = _this.next('ul');
+
+			next.slideToggle();
+
+		});
+
+		// 1、引入了less.js后，这个库内部分发送一个ajax请求
+		// 2、服务器会返回xx.less内容，然后通过正则表式式替换完成编译
+		// 3、var style = document.createElement('style');
+		// 4、style.innerHTML = 编译后的结果
+		// 5、document.querySelector('header').appendChild(style);
+
+	</script>
+
+</body>
+</html>
