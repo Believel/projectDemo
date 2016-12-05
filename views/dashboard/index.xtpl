@@ -1,4 +1,4 @@
-{{extend ('../layout/base')}}
+{{extend ('../layout/main')}}
 
 {{#block ('content')}}
 	<!-- 个人资料 -->

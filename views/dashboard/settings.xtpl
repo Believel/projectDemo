@@ -1,4 +1,4 @@
-{{extend ('../layout/base')}}
+{{extend ('../layout/main')}}
 
 {{#block ('content')}}
 	<!-- 讲师资料 -->
@@ -91,7 +91,7 @@
 				<div class="form-group">
 					<div class="col-md-8">
 						<a href="./course_add_step2.html" class="btn btn-success btn-sm pull-right">保 存</a>
-						<a href="./repass.html" class="btn btn-link btn-sm pull-right">更改密码？</a>
+						<a href="/repass" class="btn btn-link btn-sm pull-right">更改密码？</a>
 					</div>
 				</div>
 			</form>

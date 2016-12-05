@@ -12,3 +12,7 @@ router.get('/',function(req,res){
 router.get('/settings',function(req,res){
 	res.render('dashboard/settings',{})
 })
+// 更改密码
+router.get('/repass',function(req,res){
+	res.render('dashboard/repass',{})
+})

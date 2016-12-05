@@ -1,19 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>学IT - 后台管理系统</title>
-	<link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
-	<link rel="stylesheet" href="./assets/font-awesome/css/font-awesome.css">
-	<link rel="stylesheet" href="./assets/nprogress/nprogress.css">
-	<link rel="stylesheet" href="./less/index.css">
-</head>
-<body>
+{{extend ('../layout/plain')}}
+
+{{#block ('plain')}}
 	<!-- 登录 -->
 	<div class="login">
 		<div class="login-wrap">
 			<div class="avatar">
-				<img src="./uploads/monkey.png" class="img-circle" alt="">
+				<img src="/monkey.png" class="img-circle" alt="">
 			</div>
 			<form action="" class="col-md-offset-1 col-md-10">
 				<div class="input-group input-group-lg">
@@ -31,13 +23,5 @@
 				<button type="submit" class="btn btn-lg btn-primary btn-block">登 录</button>
 			</form>
 		</div>
-	</div>	<script src="./js/sea.js"></script>
-	<script src="./js/seajs-preload.js"></script>
-	<script src="./js/seajs-config.js"></script>
-	<script>
-
-		seajs.use();
-		
-	</script>
-</body>
-</html>
+	</div>	
+{{/block}}

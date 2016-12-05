@@ -19,12 +19,14 @@ app.use('/',express.static('uploads'));
 var index = require('./controllers/index');
 var user = require('./controllers/user');
 var teacher = require('./controllers/teacher');
+var login = require('./controllers/login');
 
 // 挂载子路由
 app.use('/',index);
 // 访问/user是就是访问./controllers/user.js
 app.use('/user',user);
 app.use('/teacher',teacher);
+app.use('/login',login);
 
 // 监听端口
 app.listen(3000);

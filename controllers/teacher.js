@@ -6,3 +6,6 @@ module.exports = router;
 router.get('/',function(req,res){
 	res.render('teachers/index',{});
 });
+router.get('/add',function(req,res){
+	res.render('teachers/add',{});
+})
