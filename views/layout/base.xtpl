@@ -25,6 +25,7 @@
 		<div class="navs">
 			<ul class="list-unstyled">
 				<li>
+				    <!-- 根 -->
 					<a href="/">
 						<i class="fa fa-home"></i>
 						仪表盘
@@ -50,6 +51,7 @@
 					</a>
 					<ul class="list-unstyled">
 						<li>
+						<!-- 输入course模块，是add功能 -->
 							<a href="/course/add">
 								 课程添加
 							</a>
@@ -135,8 +137,39 @@
 			{{{block ('content')}}}
 		</div>
 	</div>
-	<script src="/libs/sea.js"></script>
+	<!-- 利用模块加载器来写 -->
+	<!-- <script>
+		$(function(){
+			// 导航菜单栏的显示与隐藏功能
+			$('.navs a').on('click',function(){
+				var _this = $(this);
+				// 如果当前当前点击的href属性不等于javascript,就什么也不做
+				if(_this.attr('href')!='javascript'){
+					return;
+				}
+				// 否则的话，就找到他的兄弟节点，让其显示或者隐藏
+				_this.next('ul').slideToggle();
+			});
 
+			//选中状态功能
+			// 思路：利用url中的pathname与href中的内容看是否相等，相等的话就有选中状态，但是也有问题（当是/course/add多个的话这样匹配也是不对的）
+			$('.navs a').each(function() {
+
+				var _this = $(this),
+				href = _this.attr('href'),
+				pathname = location.pathname;
+				// 测试 
+				// console.log(href,pathname);
+				if(href==pathname){
+					_this.addClass('active');
+					return false;
+				}
+
+				
+			});
+		})
+	</script> -->
+	<script src="/libs/sea.js"></script>
 	<script>
 		// 配置
 		seajs.config({

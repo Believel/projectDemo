@@ -9,6 +9,6 @@ router.get('/',function(req,res){
 	res.render('dashboard/index',{name:'itcast'});
 });
 //个人设置
-router.get('/settings',function(res,req){
+router.get('/settings',function(req,res){
 	res.render('dashboard/settings',{})
 })

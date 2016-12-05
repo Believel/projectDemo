@@ -1,5 +1,6 @@
 define(function (require, exports, module) {
 
+	// 把jquery加载进来
 	var $ = require('jquery');
 
 	// 导航菜单
@@ -8,6 +9,7 @@ define(function (require, exports, module) {
 		var _this = $(this);
 
 		// 链接
+		// 如果当前当前点击的href属性不等于javascript,就什么也不做
 		if(_this.attr('href') != 'javascript:;') {
 			return;
 		}
@@ -24,6 +26,8 @@ define(function (require, exports, module) {
 			// 获取地址信息
 			pathname = location.pathname;
 
+			console.log(href,pathname);
+			
 		if(pathname.lastIndexOf(href) == 1) {
 			// 添加选中状态
 			_this.addClass('active');

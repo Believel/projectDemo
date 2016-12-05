@@ -13,13 +13,18 @@ app.use(bodyParser.urlencoded({extend:false}));
 
 // 设置目录 ,加载静态资源
 app.use('/',express.static('public'));
-app.use('',express.static('uploads'));
+app.use('/',express.static('uploads'));
 
 // 加载子路由
 var index = require('./controllers/index');
+var user = require('./controllers/user');
+var teacher = require('./controllers/teacher');
 
 // 挂载子路由
 app.use('/',index);
+// 访问/user是就是访问./controllers/user.js
+app.use('/user',user);
+app.use('/teacher',teacher);
 
 // 监听端口
 app.listen(3000);
