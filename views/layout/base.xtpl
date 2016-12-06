@@ -22,6 +22,8 @@
 
 
 	<script src="/libs/sea.js"></script>
+
+	{{{block ('script')}}}
 	<script>
 		// 配置
 		seajs.config({

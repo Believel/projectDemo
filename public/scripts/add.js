@@ -1,5 +1,6 @@
 define(function (require, exports, module) {
 
+	// 引入jquery文件
 	var $ = require('jquery');
 
 	// console.log($);
@@ -19,17 +20,16 @@ define(function (require, exports, module) {
 			type: 'post',
 			data: formData,
 			success: function (info) {
-
-				alert(info.msg);
-
+				// alert(info.msg);//添加成功
 				if(info.code == 10000) {
+					// 如果与后台返回的状态码相等，那么就刷新当前页
 					location.reload();
 				}
 
 			}
 		});
 		
-		// 阻止默认行为
+		// 阻止默认行为(默认的submit有一个提交的)
 		return false;
 	});
 

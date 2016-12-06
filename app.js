@@ -1,5 +1,5 @@
 var express = require('express');
-var bodyParser = require('body-parser');
+var bodyParser = require('body-parser');//中间件方法
 var app = express();
 
 // 设置模板引擎
