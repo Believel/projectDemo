@@ -1,4 +1,3 @@
-
 -- 讲师表
 DROP TABLE IF EXISTS `teacher`;
 CREATE TABLE `teacher` (

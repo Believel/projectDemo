@@ -35,19 +35,25 @@
 					</tr>
 				</thead>
 				<tbody>
+					{{#each (teachers)}}
 					<tr>
-						<td>1</td>
-						<td>张盼盼</td>
-						<td>妮妮</td>
-						<td>22</td>
+						<td>{{xindex+1}}</td>
+						<td>{{this.tc_name}}</td>
+						<td>{{this.tc_roster}}</td>
+						<td>{{this.tc_brithday}}</td>
+						{{#if (this.tc_gender===0)}}
+						<td>男</td>
+						{{else}}
 						<td>女</td>
-						<td>18037453968</td>
+						{{/if}}
+						<td>{{this.tc_cellphone}}</td>
 						<td>
 							<a href="#teacherModal" data-toggle="modal" class="btn btn-info btn-xs">查 看</a>
 							<a href="./teacher_add.html" class="btn btn-info btn-xs">编 辑</a>
 							<a href="javascript::" class="btn btn-warning btn-xs">注 销</a>
 						</td>
 					</tr>
+					{{/each}}
 				</tbody>
 			</table>
 		</div>
