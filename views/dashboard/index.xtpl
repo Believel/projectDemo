@@ -40,3 +40,9 @@
 		</div>
 	</div>
 {{/block}}
+{{#block ('script')}}
+	<script>
+		seajs.use()
+	</script>
+{{/block}}
+
