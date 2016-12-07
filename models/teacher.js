@@ -11,6 +11,12 @@ exports.add = function(body, callback){
 };
 // 展示数据
 exports.show = function(callback){
-	console.log('show方法被调用了');
+	// console.log('show方法被调用了');
 	db.query('SELECT * FROM `teacher`',callback);
-}
+};
+// 查询单个讲师
+exports.find = function(tc_id,callback){
+	// 根据讲师id查询
+	var queryStr = 'SELECT * FROM `teacher` WHERE tc_id ='+tc_id;
+	db.query(queryStr,callback);
+};

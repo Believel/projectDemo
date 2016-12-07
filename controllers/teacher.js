@@ -14,10 +14,22 @@ router.get('/',function(req,res){
 		res.render('teachers/index',{teachers:result});
 	});
 });
+// 添加模块路由
 router.get('/add',function(req,res){
 	res.render('teachers/add',{});
 });
-// 添加讲师
+// “编辑”讲师路由
+router.get('/edit/:tc_id',function(req,res){
+	// 拿到讲师对应的id号
+	var tc_id = req.params.tc_id;
+	// 调用模型查询对应讲师信息
+	tcModel.find(tc_id,function(err,result){
+		if(err) return;
+		res.render('teachers/add',{});
+	})
+	
+});
+// “添加”讲师
 router.post('/add',function(req,res){
 	// 从前端拿到传过来的数据
 	// console.log(req.body)

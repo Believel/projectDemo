@@ -29,7 +29,8 @@
 		seajs.config({
 			base: '/assets',
 			alias: {
-				jquery: 'jquery/jquery.js'
+				jquery: 'jquery/jquery.js',
+				bootstrap: 'bootstrap/js/bootstrap.js'
 			}
 		})
 

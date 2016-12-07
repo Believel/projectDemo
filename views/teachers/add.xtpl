@@ -60,6 +60,6 @@
 {{#block ('script')}}
 	<script>
 	// 使用下面这句话之前，在base.xtpl中已经引入了sea.js文件
-		seajs.use('/scripts/add')
+		seajs.use('/scripts/teachers/add')
 	</script>
 {{/block}}
