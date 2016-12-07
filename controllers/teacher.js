@@ -25,7 +25,7 @@ router.get('/edit/:tc_id',function(req,res){
 	// 调用模型查询对应讲师信息
 	tcModel.find(tc_id,function(err,result){
 		if(err) return;
-		res.render('teachers/add',{});
+		res.render('teachers/add',{teacher:result[0]});
 	})
 	
 });
@@ -46,4 +46,18 @@ router.post('/add',function(req,res){
 			result:{}
 		});
 	});
+})
+// “编辑”讲师
+router.post('/edit',function(req,res){
+	// 拿前端发送的数据
+	console.log(req.body)
+	// 将修改过的数据传至数据库中
+	tcModel.edit(req.body,function(err,result){
+		if(err) return;
+		res.json({
+			code:10000,
+			msg:'修改成功',
+			result:{}
+		})
+	})
 })

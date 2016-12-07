@@ -14,6 +14,15 @@ exports.show = function(callback){
 	// console.log('show方法被调用了');
 	db.query('SELECT * FROM `teacher`',callback);
 };
+// 修改讲师信息
+exports.edit = function(body, callback){
+	//组件是不允许更改的
+	var tc_id = body.tc_id;
+	delete tc_id;
+	var query = 'UPDATE `teacher` SET ? WHERE `tc_id` ='+tc_id;
+	db.query(query, body, callback);
+	
+}
 // 查询单个讲师
 exports.find = function(tc_id,callback){
 	// 根据讲师id查询

@@ -14,18 +14,18 @@ define(function (require, exports, module) {
 
 		// 获取表单数据
 		var formData = $(this).serialize();
-
+		var url = $(this).attr('action').trim();
 		$.ajax({
-			url: '/teacher/add',
+			url: url,
 			type: 'post',
 			data: formData,
 			success: function (info) {
 				// alert(info.msg);//添加成功
 				if(info.code == 10000) {
 					// 如果与后台返回的状态码相等，那么就刷新当前页
-					location.reload();
+					// location.reload();
+					location.href = '/teacher';
 				}
-
 			}
 		});
 		
