@@ -11,4 +11,25 @@ define(function(require,exports,module){
 		teacherModal.modal();
 		return false;
 	});	
+
+	// 实现注销功能
+	// 思路：点击“注销”按钮，发送ajax请求,把当前的id号发送给后台，后台接收之后，
+	// 修改字段tc_type=1,此时就注销掉了。
+	$('#teacherList').on('click',"a.deleteInfo",function(){
+		var id = $(".deleteInfo").data("index")
+		console.log(id);
+		$.ajax({
+			url:'/teacher',
+			type:'get',
+			data:{},
+			success:function(info){
+
+			},
+			error:function() {
+				
+			}
+		})
+		//阻止默认的行为
+		return false;
+	})
 })

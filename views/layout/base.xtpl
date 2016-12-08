@@ -22,7 +22,7 @@
 	<!--seajs的扩展插件： 预加载模块包 -->
 	<script src="/libs/seajs-preload.js"></script>
 	<!-- 单独把seajs中加载的模块写在一个文件中，方便引入进来 -->
-	<script src="libs/seajs-config.js"></script>
+	<script src="/libs/seajs-config.js"></script>
 	{{{block ('script')}}}
 </body>
 </html>
