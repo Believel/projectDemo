@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.14.0",
+    "express-session": "^1.14.2",
     "seajs": "^3.0.2",
     "xtemplate": "^4.6.0",
     "xtpl": "^3.3.0"

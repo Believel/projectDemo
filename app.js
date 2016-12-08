@@ -1,5 +1,7 @@
 var express = require('express');
 var bodyParser = require('body-parser');//中间件方法
+var cookieParser = require('cookie-parser')//cookie的中间件
+var session = require('express-session') // session的中间件
 var app = express();
 
 // 设置模板引擎
@@ -8,6 +10,14 @@ app.set('views',__dirname+'/views');
 // 指定使用哪个模板引擎
 app.set('view engine','xtpl');
 
+// 应用cookie的中间件，此中间件就会在响应（res）的时候设置cookie方法
+app.use(cookieParser());
+// 应用session的中间件
+// 在req中添加一个属性
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+}))
 // 解析application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extend:false}));
 

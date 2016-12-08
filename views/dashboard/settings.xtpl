@@ -1,5 +1,7 @@
 {{extend ('../layout/main')}}
-
+{{#block ('style')}}
+	<link rel="stylesheet" href="/assets/bootstrap-datepicker/css/bootstrap-datepicker3.css">
+{{/block}}
 {{#block ('content')}}
 	<!-- 讲师资料 -->
 	<div class="body teacher-profile">
@@ -41,7 +43,7 @@
 				<div class="form-group">
 					<label for="" class="col-md-3 control-label">出生日期</label>
 					<div class="col-md-5">
-						<input type="text" class="form-control input-sm">
+						<input type="text" class="form-control input-sm" id="datepicker">
 					</div>
 				</div>
 				<div class="form-group">
@@ -79,7 +81,7 @@
 				<div class="form-group">
 					<label for="" class="col-md-3 control-label">入职日期</label>
 					<div class="col-md-5">
-						<input type="text" class="form-control input-sm">
+						<input type="text" class="form-control input-sm" data-provide="datepicker" data-date-end-date="0d" data-date-format="yyyy-mm-dd" data-date-language="zh-CN">
 					</div>
 				</div>
 				<div class="form-group">
@@ -97,4 +99,9 @@
 			</form>
 		</div>
 	</div>
+{{/block}}
+{{#block ('script')}}
+	<script>
+		seajs.use('/scripts/dashboard/profile');
+	</script>
 {{/block}}

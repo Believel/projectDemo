@@ -73,7 +73,8 @@ a:focus {
 }
 .main {
   min-width: 844px;
-  margin: 72px 0 30px 180px;
+  /* 这里把margin修改为padding值是为了防止日期插件引入时获得位置有偏差 */
+  padding: 72px 0 30px 180px;
 }
 .main .header {
   width: 100%;
