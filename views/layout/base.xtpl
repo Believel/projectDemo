@@ -19,6 +19,7 @@
 	{{{block ('plain')}}}
 
 	{{{block ('template')}}}
+	{{{block ('tpl')}}}
 	<script src="/libs/sea.js"></script>
 	<!--seajs的扩展插件： 预加载模块包 -->
 	<script src="/libs/seajs-preload.js"></script>

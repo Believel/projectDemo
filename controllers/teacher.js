@@ -61,3 +61,16 @@ router.post('/edit',function(req,res){
 		})
 	})
 })
+//"查看"讲师信息l
+router.post('/preview',function(req,res){
+	//接收前端传过来的讲师id
+	//利用id查询
+	// console.log(req.body.id);
+	// console.log("前端数据过来了");
+	tcModel.find(req.body.id,function(err,result){
+		if(err)return;
+		// 后台的数据返回给前端
+		res.json(result[0]);
+	})
+
+})
