@@ -2,6 +2,9 @@ define(function (require, exports, module) {
 
 	// 把jquery加载进来
 	var $ = require('jquery');
+	var NProgress = require('nprogress');// 引入进度条的插件
+	NProgress.start();
+	NProgress.done();
 
 	// 导航菜单
 	$('.navs a').on('click', function () {

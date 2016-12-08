@@ -5,7 +5,8 @@ define(function (require, exports, module) {
 	// 引入jquery插件，验证插件
 	require('validate');
 	require('form');
-
+	require('datepicker');
+	require('language');
 	// 测试jquery插件是否引入进来
 	// console.log($.fn);
 	
