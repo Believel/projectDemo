@@ -1,6 +1,7 @@
 var express = require('express');
 var tcModal = require('../models/teacher');
 var region = require('../models/region.json');
+
 // 子路由
 var router = express.Router();
 // 导出
@@ -26,6 +27,19 @@ router.get('/settings',function(req,res){
 		res.render('dashboard/settings',{teacher:result[0]});
 	})
 	
+})
+router.post('/update',function(req,res){
+	var body = req.body;
+	// res.send('收数据了');//返回前端信息
+	tcModal.edit(body,function(err, result){
+		if(err) console.log(err);
+		res.json({
+			code:10000,
+			msg:'更新成功',
+			result:{}
+		})
+	})
+
 })
 // 更改密码
 router.get('/repass',function(req, res){
