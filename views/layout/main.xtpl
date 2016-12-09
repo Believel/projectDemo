@@ -7,9 +7,13 @@
 		<div class="profile">
 			<!-- 头像 -->
 			<div class="avatar img-circle">
+			{{#if (loginfo.tc_avatar) }}
+				<img src="{{loginfo.tc_avatar}}">
+			{{ else }}
 				<img src="/avatar.jpg">
+			{{/if}}
 			</div>
-			<h4>布头儿</h4>
+			<h4>{{loginfo.tc_name}}</h4>
 		</div>
 		<!-- 导航菜单 -->
 		<div class="navs">

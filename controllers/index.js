@@ -8,9 +8,10 @@ router.get('/',function(req,res){
 	// res.send('hello nodejs');
 	res.render('dashboard/index',{name:'itcast'});
 	
+	// 随意测试cookie和sesson
 	// res.cookie('age',22);
-	req.session.name = '张盼盼';
-	console.log(req);
+	// req.session.name = '张盼盼';
+	// console.log(req);
 
 });
 //个人设置

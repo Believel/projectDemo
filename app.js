@@ -28,9 +28,15 @@ app.use('/',express.static('uploads'));
 app.use(function(req, res, next){
 	var url = req.originalUrl;
 	// console.log(url);
+	
+	// app.locals.demo = '你好';
+	// express提供了一个全局的对象，在这个对象下的数据在任何视图中都可以获得
+	
+	// 登录信息
 	// 在这里读取存取的信息，也就是说在每一个页面都会输出这个信息
 	// console.log(req.session);
 	var loginfo = req.session.loginfo;
+	app.locals.loginfo = loginfo; // 把获得的登录信息存放在全局的对象下面
 	// // 判断如果没有存储loginfo的信息，返回的是undefined
 	if(url !=='/login' && !loginfo){
 		res.redirect('/login');

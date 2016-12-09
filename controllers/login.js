@@ -15,7 +15,7 @@ router.post('/',function(req,res){
 		// console.log(result);
 		// 成功之后要记住登录状态
 		// 存取登录的信息，可以看作是全局的变量
-		req.session.loginfo = result;
+		req.session.loginfo = result[0];
 		res.json({
 			code:10000,
 			msg:'登录成功',
