@@ -54,21 +54,15 @@
 				</div>
 				<div class="form-group">
 					<label for="" class="col-md-3 control-label">籍贯</label>
-					<div class="col-md-5">
-						<select name="" class="form-control input-sm">
-							<option value="">河北省</option>
+					<div class="col-md-5 hometown">
+						<select name="" class="form-control input-sm" id="province" data-id="{{teacher.tc_province}}">
+							<!-- <option value="">河北省</option>
 							<option value="">山东省</option>
-							<option value="">北京市</option>
+							<option value="">北京市</option> -->
 						</select>
-						<select name="" class="form-control input-sm">
-							<option value="">河北省</option>
-							<option value="">山东省</option>
-							<option value="">北京市</option>
+						<select name="" class="form-control input-sm" id="city" data-id="{{teacher.tc_city}}">
 						</select>
-						<select name="" class="form-control input-sm">
-							<option value="">河北省</option>
-							<option value="">山东省</option>
-							<option value="">北京市</option>
+						<select name="" class="form-control input-sm" id="distinct" data-id="{{teacher.tc_district}}">
 						</select>
 					</div>
 				</div>
@@ -87,13 +81,13 @@
 				<div class="form-group">
 					<label for="" class="col-md-3 control-label">入职日期</label>
 					<div class="col-md-5">
-						<input type="text" class="form-control input-sm" data-provide="datepicker" data-date-end-date="0d" data-date-format="yyyy-mm-dd" data-date-language="zh-CN" placeholder="{{teaccher.tc_join_time}}">
+						<input type="text" class="form-control input-sm" data-provide="datepicker" data-date-end-date="0d" data-date-format="yyyy-mm-dd" data-date-language="zh-CN" value="{{teacher.tc_join_time}}">
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="" class="col-md-3 control-label">个人介绍</label>
 					<div class="col-md-5 ckeditor">
-						<textarea name="" rows="15" class="form-control input-sm">{{teacher.tc_introduce}}</textarea>
+						<textarea name="" id="teacherIntroduce" rows="15" class="form-control input-sm">{{teacher.tc_introduce}}</textarea>
 					</div>
 				</div>
 				<div class="form-group">

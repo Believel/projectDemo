@@ -1,5 +1,6 @@
 var express = require('express');
 var tcModal = require('../models/teacher');
+var region = require('../models/region.json');
 // 子路由
 var router = express.Router();
 // 导出
@@ -27,6 +28,11 @@ router.get('/settings',function(req,res){
 	
 })
 // 更改密码
-router.get('/repass',function(req,res){
+router.get('/repass',function(req, res){
 	res.render('dashboard/repass',{})
+})
+// 省市县
+router.get('/region',function(req, res){
+	// res.send('请求地区');
+	res.json(region);
 })
