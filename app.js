@@ -37,9 +37,10 @@ app.use(function(req, res, next){
 	// console.log(req.session);
 	var loginfo = req.session.loginfo;
 	app.locals.loginfo = loginfo; // 把获得的登录信息存放在全局的对象下面
+	// console.log(loginfo);
 	// // 判断如果没有存储loginfo的信息，返回的是undefined
 	if(url !=='/login' && !loginfo){
-		res.redirect('/login');
+		return res.redirect('/login');
 	}
 	next();
 });
