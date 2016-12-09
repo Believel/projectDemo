@@ -29,3 +29,8 @@ exports.find = function(tc_id,callback){
 	var queryStr = 'SELECT * FROM `teacher` WHERE tc_id ='+tc_id;
 	db.query(queryStr,callback);
 };
+// 根据用户名和密码查询表中的数据
+exports.authored = function(body, callback){
+	var queryStr = 'SELECT * FROM `teacher` WHERE tc_name ="'+body.tc_name+'"and tc_pass ="'+body.tc_pass+'"';
+	db.query(queryStr,callback);
+}

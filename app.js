@@ -25,6 +25,19 @@ app.use(bodyParser.urlencoded({extend:false}));
 app.use('/',express.static('public'));
 app.use('/',express.static('uploads'));
 
+app.use(function(req, res, next){
+	var url = req.originalUrl;
+	// console.log(url);
+	// 在这里读取存取的信息，也就是说在每一个页面都会输出这个信息
+	// console.log(req.session);
+	var loginfo = req.session.loginfo;
+	// // 判断如果没有存储loginfo的信息，返回的是undefined
+	if(url !=='/login' && !loginfo){
+		res.redirect('/login');
+	}
+	next();
+});
+
 // 加载子路由
 var index = require('./controllers/index');
 var user = require('./controllers/user');
