@@ -4,8 +4,11 @@ define(function(require, exports, module){
 	require('language');// 汉化
 	require('region');//省级联动插件
 	require('form'); // 引入表单插件
+	require('uploadify');//引入文件上传插件
+
 	var ck = require('ckeditor');//编辑器插件
 	ck.replace("teacherIntroduce");
+
 	// 使用js方式使用日期插件
 	$('#datepicker').datepicker({
 		format:'yyyy-mm-dd',
@@ -36,5 +39,22 @@ define(function(require, exports, module){
 		});
 		return false;
 	})
-	
+
+	// 文件上传使用
+	$('#upfile').uploadify({
+		buttonText : '',//文本内容
+		height:'120px',
+		// formData:'avatar',//用于文件上传给后端的数据信息
+		swf:'/assets/uploadify/uploadify.swf',//flash文件路径
+		uploader:'/upfile',// 后台接口
+		fileObjName:'tc_avatar',// 上传时的文件的名字
+		itemTemplate: '<span></span>',//上传文件的进度信息
+		// 事件监听
+		onUploadSuccess: function(file, data) {
+           // console.log(data);
+           var data = JSON.parse(data);
+           console.log(data);
+           $('.preview img').attr('src','/avatars/'+data.filename);
+        }
+	})
 })

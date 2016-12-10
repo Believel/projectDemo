@@ -18,9 +18,9 @@
 					<label for="" class="col-md-3 control-label">头像</label>
 					<div class="col-md-2 preview">
 					{{#if (teacher.tc_avatar)}}
-						<img src="{{teacher.tc_avatar}}}">
+						<img src="/avatars/{{teacher.tc_avatar}}">
 					{{ else }}
-					<img src="./images/default.png">
+						<img src="./images/default.png">
 					{{/if}}
 						<input type="file" id="upfile">
 						<div class="cover">

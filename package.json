@@ -11,6 +11,8 @@
   "dependencies": {
     "express": "^4.14.0",
     "express-session": "^1.14.2",
+    "multer": "^1.2.0",
+    "path": "^0.12.7",
     "seajs": "^3.0.2",
     "xtemplate": "^4.6.0",
     "xtpl": "^3.3.0"

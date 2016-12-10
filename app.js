@@ -17,6 +17,7 @@ app.use(cookieParser());
 app.use(session({
   secret: 'keyboard cat',
   resave: false,
+  cookie:{maxAge:60*60*24*1000}
 }))
 // 解析application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extend:false}));
