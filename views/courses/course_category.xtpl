@@ -21,150 +21,28 @@
 							</tr>
 						</thead>
 						<tbody>
+						{{#each (categorys)}}
 							<tr class="active">
-								<td class="text-left">前端开发</td>
+								<td class="text-left">{{this.cg_name}}</td>
 								<td>12</td>
-								<td>是</td>
+								<td>{{#if(this.cg_is_hide===0)}} 是 {{else}} 否{{/if}}</td>
 								<td>
 									<a href="./course_category_add.html" class="btn btn-info btn-xs">编辑</a>
 									<a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
 								</td>
 							</tr>
+							{{#each (this.childs)}}
 							<tr>
-								<td class="text-left">&nbsp;&nbsp;├ HTML/CSS</td>
+								<td class="text-left">&nbsp;&nbsp;├ {{this.cg_name}}</td>
 								<td>12</td>
-								<td>是</td>
+								<td>{{#if(this.cg_is_hide===0)}} 是 {{else}} 否{{/if}}</td>
 								<td>
 									<a href="./course_category_add.html" class="btn btn-info btn-xs">编辑</a>
 									<a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
 								</td>
 							</tr>
-							<tr>
-								<td class="text-left">&nbsp;&nbsp;├ Javascript</td>
-								<td>12</td>
-								<td>是</td>
-								<td>
-									<a href="./course_category_add.html" class="btn btn-info btn-xs">编辑</a>
-									<a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
-								</td>
-							</tr>
-							<tr>
-								<td class="text-left">&nbsp;&nbsp;├ 移动Web</td>
-								<td>12</td>
-								<td>是</td>
-								<td>
-									<a href="./course_category_add.html" class="btn btn-info btn-xs">编辑</a>
-									<a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
-								</td>
-							</tr>
-							<tr class="active">
-								<td class="text-left">后端开发</td>
-								<td>14</td>
-								<td>是</td>
-								<td>
-									<a href="./course_category_add.html" class="btn btn-info btn-xs">编辑</a>
-									<a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
-								</td>
-							</tr>
-							<tr>
-								<td class="text-left">&nbsp;&nbsp;├ NodeJS</td>
-								<td>12</td>
-								<td>是</td>
-								<td>
-									<a href="./course_category_add.html" class="btn btn-info btn-xs">编辑</a>
-									<a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
-								</td>
-							</tr>
-							<tr>
-								<td class="text-left">&nbsp;&nbsp;├ PHP</td>
-								<td>12</td>
-								<td>是</td>
-								<td>
-									<a href="./course_category_add.html" class="btn btn-info btn-xs">编辑</a>
-									<a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
-								</td>
-							</tr>
-							<tr class="active">
-								<td class="text-left">数据库</td>
-								<td>18</td>
-								<td>是</td>
-								<td>
-									<a href="./course_category_add.html" class="btn btn-info btn-xs">编辑</a>
-									<a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
-								</td>
-							</tr>
-							<tr>
-								<td class="text-left">&nbsp;&nbsp;├ Mysql</td>
-								<td>12</td>
-								<td>是</td>
-								<td>
-									<a href="./course_category_add.html" class="btn btn-info btn-xs">编辑</a>
-									<a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
-								</td>
-							</tr>
-							<tr>
-								<td class="text-left">&nbsp;&nbsp;├  MongoDB</td>
-								<td>12</td>
-								<td>是</td>
-								<td>
-									<a href="./course_category_add.html" class="btn btn-info btn-xs">编辑</a>
-									<a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
-								</td>
-							</tr>
-							<tr>
-								<td class="text-left">&nbsp;&nbsp;├  Oracle</td>
-								<td>12</td>
-								<td>是</td>
-								<td>
-									<a href="./course_category_add.html" class="btn btn-info btn-xs">编辑</a>
-									<a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
-								</td>
-							</tr>
-							<tr class="active">
-								<td class="text-left">云计算&大数据</td>
-								<td>12</td>
-								<td>是</td>
-								<td>
-									<a href="./course_category_add.html" class="btn btn-info btn-xs">编辑</a>
-									<a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
-								</td>
-							</tr>
-							<tr>
-								<td class="text-left">&nbsp;&nbsp;├  大数据</td>
-								<td>12</td>
-								<td>是</td>
-								<td>
-									<a href="./course_category_add.html" class="btn btn-info btn-xs">编辑</a>
-									<a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
-								</td>
-							</tr>
-							<tr>
-								<td class="text-left">&nbsp;&nbsp;├  云计算</td>
-								<td>12</td>
-								<td>是</td>
-								<td>
-									<a href="./course_category_add.html" class="btn btn-info btn-xs">编辑</a>
-									<a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
-								</td>
-							</tr>
-							<tr class="active">
-								<td class="text-left">视觉设计</td>
-								<td>12</td>
-								<td>是</td>
-								<td>
-									<a href="./course_category_add.html" class="btn btn-info btn-xs">编辑</a>
-									<a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
-								</td>
-							</tr>
-							<tr>
-								<td class="text-left">&nbsp;&nbsp;├  Photoshop</td>
-								<td>12</td>
-								<td>是</td>
-								<td>
-									<a href="./course_category_add.html" class="btn btn-info btn-xs">编辑</a>
-									<a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
-								</td>
-							</tr>
+							{{/each}}
+						{{/each}}
 						</tbody>
 					</table>
 				</div>

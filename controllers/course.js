@@ -2,7 +2,7 @@
 
  //加载分类数据模块
  var cgModal = require('../models/category')
-
+var common = require('../utils/common');//自己封装的改变json数据格式的方法
  // 引入创建子路由的中间件
 var router = express.Router();
 
@@ -17,10 +17,16 @@ router.get('/list',function(req,res){
 	res.render('courses/course_list')
 }) 
 router.get('/category',function(req,res){
-	res.render('courses/course_category')
+	// 显示所有的分类列表
+	cgModal.list(function(err,result){
+		if(err) return;
+		var tree = common.getTree(result,0);
+		res.render('courses/course_category',{categorys:tree})
+	})
+	
 }) 
 router.get('/category/add',function(req,res){
-	//取分类
+	//按顶级取分类
 	cgModal.show(function(err,result) {
 		if(err) return;
 		// console.log(result);//返回的是对应数据表中的查询数据对象-顶级分类
