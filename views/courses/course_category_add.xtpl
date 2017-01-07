@@ -7,46 +7,45 @@
 					<li class="active">课程分类</li>
 				</ol>
 				<div class="category-add">
-					<form action="" class="form-horizontal">
+					<form action="" class="form-horizontal" id="addCategory">
 						<div class="form-group">
 							<label for="" class="col-md-4 control-label">名称</label>
 							<div class="col-md-3">
-								<input type="text" class="form-control input-sm" placeholder="填写分类名称">
+								<input type="text" class="form-control input-sm" name="cg_name" placeholder="填写分类名称">
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="" class="col-md-4 control-label">级别</label>
 							<div class="col-md-2">
-								<select name="" class="form-control input-sm">
-									<option value="">顶级分类</option>
-									<option value="">前端开发</option>
-									<option value="">后端开发</option>
-									<option value="">数据库</option>
-									<option value="">云计算&大数据</option>
-									<option value="">视觉设计</option>
+								<select name="cg_pid" class="form-control input-sm">
+									<option value="0">顶级分类</option>
+								{{#each (categorys)}}
+									<option value="{{this.cg_id}}">{{this.cg_name}}</option>
+								{{/each}}
 								</select>
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="" class="col-md-4 control-label">排序</label>
 							<div class="col-md-1">
-								<input type="text" class="form-control input-sm" value="10">
+								<input type="text" class="form-control input-sm" value="10" name="cg_order">
 							</div>
 						</div>
 						<div class="form-group">
 							<label for="" class="col-md-4 control-label">是否显示</label>
 							<div class="col-md-3">
 								<label class="checkbox-inline">
-									<input type="checkbox" checked> 是
+									<input type="checkbox" checked name="cg_is_hide" value="0"> 是
 								</label>
 								<label class="checkbox-inline">
-									<input type="checkbox"> 否
+									<input type="checkbox" value="1" name="cg_is_hide"> 否
 								</label>
 							</div>
 						</div>
 						<div class="form-group">
-							<div class="col-md-8">
-								<a href="./course_category.html" class="btn btn-success btn-sm pull-right">保存</a>
+							<div class="col-md-8"> 
+								<button type="submit" class="btn btn-success btn-sm pull-right"> 保 存 
+								</button>
 							</div>							
 						</div>
 					</form>
@@ -57,7 +56,7 @@
 {{#block ('script')}}
 	<script>
 
-		seajs.use();
+		seajs.use('/scripts/courses/category_add');
 		
 	</script>
 {{/block}}

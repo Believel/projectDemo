@@ -173,6 +173,6 @@
 
 {{#block ('script')}}
 	<script>
-		seajs.use();
+		seajs.use('./scripts/course/category_add');
 	</script> 
 {{/block}}
