@@ -53,7 +53,7 @@ define(function(require, exports, module){
 		onUploadSuccess: function(file, data) {
            // console.log(data);
            var data = JSON.parse(data);
-           console.log(data);
+           // console.log(data);
            $('.preview img').attr('src','/avatars/'+data.filename);
         }
 	})

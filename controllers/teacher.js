@@ -1,5 +1,5 @@
 var express = require('express');
-
+ 
 // 引入讲师数据模型
 var tcModel = require('../models/teacher');
 var router = express.Router();

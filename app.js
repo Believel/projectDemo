@@ -36,13 +36,13 @@ app.use(function(req, res, next){
 	// 登录信息
 	// 在这里读取存取的信息，也就是说在每一个页面都会输出这个信息
 	// console.log(req.session);
-	var loginfo = req.session.loginfo;
-	app.locals.loginfo = loginfo; // 把获得的登录信息存放在全局的对象下面
-	// console.log(loginfo);
-	// // 判断如果没有存储loginfo的信息，返回的是undefined
-	if(url !=='/login' && !loginfo){
-		return res.redirect('/login');
-	}
+	// var loginfo = req.session.loginfo;
+	// app.locals.loginfo = loginfo; // 把获得的登录信息存放在全局的对象下面
+	// // console.log(loginfo);
+	// // // 判断如果没有存储loginfo的信息，返回的是undefined
+	// if(url !=='/login' && !loginfo){
+	// 	return res.redirect('/login'); 
+	// }
 	next();
 });
 
@@ -51,6 +51,7 @@ var index = require('./controllers/index');
 var user = require('./controllers/user');
 var teacher = require('./controllers/teacher');
 var login = require('./controllers/login');
+var course = require('./controllers/course')
 
 // 挂载子路由
 app.use('/',index);
@@ -58,6 +59,7 @@ app.use('/',index);
 app.use('/user',user);
 app.use('/teacher',teacher);
 app.use('/login',login);
+app.use('/course',course);
 
 // 监听端口
 app.listen(3000);

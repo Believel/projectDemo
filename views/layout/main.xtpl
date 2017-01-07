@@ -8,7 +8,7 @@
 			<!-- 头像 -->
 			<div class="avatar img-circle">
 			{{#if (loginfo.tc_avatar) }}
-				<img src="{{loginfo.tc_avatar}}">
+				<img src="/avatars/{{loginfo.tc_avatar}}">
 			{{ else }}
 				<img src="/avatar.jpg">
 			{{/if}}
@@ -16,7 +16,7 @@
 			<h4>{{loginfo.tc_name}}</h4>
 		</div>
 		<!-- 导航菜单 -->
-		<div class="navs">
+		<div class="navs"> 
 			<ul class="list-unstyled">
 				<li>
 				    <!-- 根 -->
