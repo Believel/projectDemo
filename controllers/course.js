@@ -1,7 +1,7 @@
  var express = require('express');
 
  //加载分类数据模块
- var cgModal = require('../models/category') //课程分类数据表
+ var cgModel = require('../models/category') //课程分类数据表
  var csModel = require('../models/course') //课程数据表
  var tcModel = require('../models/teacher') //讲师数据表
 var common = require('../utils/common');//自己封装的改变json数据格式的方法
@@ -42,7 +42,7 @@ router.get('/basic/:cs_id',function(req,res){
 			if(err) return;
 			data.teachers = rows;//所有讲师的信息
 			//查找分类的信息(顶级分类 + 子集分类)
-			cgModal.getParent(result[0]['cs_cg_id'],function(err,cats){
+			cgModel.getParent(result[0]['cs_cg_id'],function(err,cats){
 					if(err) return;
 					// console.log(cats)//课程属于分类（既有顶级又有子级分类）
 					var parents = [],
@@ -89,9 +89,27 @@ router.post('/basic',function(req,res){
 		});
 	});
 })
+//获得子分类路由
+router.post('/getChild',function(req,res){
+	var cg_id = req.body.cg_id;
+
+	cgModel.getChild(cg_id, function(err,result){
+		if(err) return;
+		res.json({
+			code:10000,
+			msg:'获取成功!',
+			result:result
+		})
+	})
+})
 //添加封面图的路由——step2
 router.get('/picture/:cs_id',function(req,res){
-	res.render('courses/picture');
+	var cs_id = req.params.cs_id;
+	csModel.find(cs_id,function(err,result){
+		if(err) result;
+		res.render('courses/picture',result[0]);
+	})
+	
 })
 //课程列表路由
 router.get('/list',function(req,res){

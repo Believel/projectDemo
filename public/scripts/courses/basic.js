@@ -26,7 +26,25 @@ define(function(require,exports,module){
 		return false;
 	})
 	
-// 获取子分类
+	// 获取子分类
+	$('#topCategory').on('change',function(){
+		var _this = $(this);
+		$.ajax({
+			url:'/course/getChild',
+			type:'post',
+			data:{cg_id:_this.val()},
+			success:function(data){
+				console.log(data);
+				var html = '';
+				for(var i =0; i< data.result.length;i++){
+					html+='<option value="'+data.result[i].cg_id+'">'+data.result[i].cg_name+'</option>'
+				}
+				_this.next('select').html(html)
+				// _this.next('select').size();//选择多少次
 
+			}
+
+		})
+	})
 
 })
