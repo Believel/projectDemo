@@ -27,7 +27,7 @@
 								<td>12</td>
 								<td>{{#if(this.cg_is_hide===0)}} 是 {{else}} 否{{/if}}</td>
 								<td>
-									<a href="./course_category_add.html" class="btn btn-info btn-xs">编辑</a>
+									<a href="/course/category/edit/{{this.cg_id}}" class="btn btn-info btn-xs">编辑</a>
 									<a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
 								</td>
 							</tr>
@@ -37,7 +37,7 @@
 								<td>12</td>
 								<td>{{#if(this.cg_is_hide===0)}} 是 {{else}} 否{{/if}}</td>
 								<td>
-									<a href="./course_category_add.html" class="btn btn-info btn-xs">编辑</a>
+									<a href="/course/category/edit/{{this.cg_id}}" class="btn btn-info btn-xs">编辑</a>
 									<a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
 								</td>
 							</tr>
@@ -51,6 +51,6 @@
 
 {{#block ('script')}}
 	<script>
-		seajs.use('./scripts/course/category_add');
+		seajs.use();
 	</script> 
 {{/block}}

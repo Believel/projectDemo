@@ -57,4 +57,22 @@
      - 处理级别问题
   2) 显示分类信息
      - 处理如何正确显示表信息
+  3)编辑分类
+  - 这里的“编辑分类”的页面和“添加分类”的页面是同一个，所以要分别处理表单提交的内容
+  -技巧：是在表单没设置一个隐藏域,判断是编辑页面还是添加页面
+```js
+  {{#if (child.cg_id)}}
+        <input type="hidden" name="cg_id" value="{{child.cg_id}}">
+  {{/if}}
+```
+-然后在利用jquery方法分别获得编辑页面和添加页面的地址
+
+```js
+//html代码
+<form id="addCategory" action="{{#if (child.cg_id)}}/course/category/update{{else}}/course/category/add{{/if}}" class="form-horizontal">
+</form>
+//js代码
+var url = $(this).attr('action').trim();
+```
+
 
