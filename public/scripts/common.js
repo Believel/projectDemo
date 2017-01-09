@@ -29,12 +29,12 @@ define(function (require, exports, module) {
 			// 获取地址信息
 			pathname = location.pathname;
 
-			// console.log(pathname,href);
+			console.log(pathname,href);
 
 		if(pathname.lastIndexOf(href) == 1) {
 			// 添加选中状态
 			_this.addClass('active');
-			_this.next('ul').show();
+			_this.closest('ul').show();//离当前最近的ul显示出来
 
 			return false;
 		}

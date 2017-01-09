@@ -1,6 +1,6 @@
 define(function(require,exports,module){
 	var $ = require('jquery');
-	require('form')
+	require('form');
 
 	$('#addCourse').on('submit',function(){
 		$(this).ajaxSubmit({
@@ -16,5 +16,7 @@ define(function(require,exports,module){
 		})
 		return false;
 	})
+	
+
 
 })
