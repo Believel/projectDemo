@@ -10,29 +10,31 @@
 						<!-- 摘要 -->
 						<div class="brief">
 							<div class="thumb">
-								<img src="{{cs_cover}}" alt="">
+								<img src="{{course.cs_cover}}" alt="">
 							</div>
 							<dl class="info">
-								<dt>{{cs_name}}</dt>
+								<dt>{{course.cs_name}}</dt>
+								<dd>讲师：{{teacher.tc_name}}</dd>
+								<dd>课时：</dd>
 							</dl>
 						</div>
 						<!-- 步聚 -->
 						<ul class="forwards list-unstyled">
 							<li>
-								<a href="/course/basic/{{cs_id}}" class="done">
+								<a href="/course/basic/{{course.cs_id}}" class="done">
 								<b class="fa fa-check"></b>
 								基本信息
 								</a>
 							</li>
 							<li>
-								<a href="/course/picture/{{cs_id}}" class="active">
+								<a href="/course/picture/{{course.cs_id}}" class="active">
 								<b>2</b>
 								课程图片
 								</a>
 							</li>
 							<li>
-								<a href="/course/lesson/{{cs_id}}">
-								<b>3</b>
+								<a href="/course/lesson/{{course.cs_id}}">
+								<b>3</b> 
 								课时管理
 								</a>
 							</li>
@@ -46,17 +48,20 @@
 							<!-- 上传图片 -->
 							<div class="picture col-md-offset-2">
 								<div class="preview">
-									<img src="./uploads/course.png" alt="">
+									<img src="{{course.cs_cover_original}}" alt="">
 								</div>
 								<p class="tips">
 									可上传jpg, gif, png格式文件, 图片建议尺寸大于300x150，文件大小不能超过2M。
 								</p>
 								<div class="col-md-2">
-									<a href="./course_add_step3.html" class="btn btn-success btn-sm">选择图片</a>
+									<a href="javascript:;" id="upfile" class="btn btn-success btn-sm">选择图片</a>
 								</div>
 								<div class="col-md-2">
 									<a href="javascript:;" class="btn btn-warning btn-sm" disabled>裁切图片</a>
 								</div>
+								<form action="" style="display: none">
+									<input type="hidden" id="csID" value="{{course.cs_id}}">
+								</form>
 							</div>
 						</div>
 					</div>
@@ -65,7 +70,7 @@
 {{#block ('script')}}
 	<script>
 
-		seajs.use('');
+		seajs.use('/scripts/courses/picture.js');
 		
 	</script>
 {{/block}}

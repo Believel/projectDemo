@@ -7,6 +7,7 @@
 					form:'jquery-form/jquery.form.js',// ajax提交表单的插件
 					region:'jquery-region/jquery.region.js',//省级联动插件
 				uploadify:'uploadify/jquery.uploadify.js',//文件上传插件
+				Jcrop:'Jcrop/js/Jcrop.js',//图片裁剪插件
 				bootstrap: 'bootstrap/js/bootstrap.js',
 				nprogress:'nprogress/nprogress.js',//进度条插件
 				datepicker:'bootstrap-datepicker/js/bootstrap-datepicker.js',//日历插件

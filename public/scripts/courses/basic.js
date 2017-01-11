@@ -17,6 +17,7 @@ define(function(require,exports,module){
 			type:'post',
 			success:function(data){
 			  alert(data.msg)
+			  console.log(data.result.cs_id)
 			  if(data.code===10000){
 			  	location.href = '/course/picture/' + data.result.cs_id;
 			  }
@@ -34,7 +35,7 @@ define(function(require,exports,module){
 			type:'post',
 			data:{cg_id:_this.val()},
 			success:function(data){
-				console.log(data);
+				// console.log(data);
 				var html = '';
 				for(var i =0; i< data.result.length;i++){
 					html+='<option value="'+data.result[i].cg_id+'">'+data.result[i].cg_name+'</option>'

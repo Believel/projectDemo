@@ -7,7 +7,7 @@ define(function(require, exports, module){
 	require('uploadify');//引入文件上传插件
 
 	var ck = require('ckeditor');//编辑器插件
-	ck.replace("teacherIntroduce");
+	ck.replace("teacherIntroduce"); 
 
 	// 使用js方式使用日期插件
 	$('#datepicker').datepicker({
@@ -47,7 +47,7 @@ define(function(require, exports, module){
 		// formData:'avatar',//用于文件上传给后端的数据信息
 		swf:'/assets/uploadify/uploadify.swf',//flash文件路径
 		uploader:'/upfile',// 后台接口
-		fileObjName:'tc_avatar',// 上传时的文件的名字
+		fileObjName:'tc_avatar',// 上传时的文件的名字,相当于表单里的name属性值
 		itemTemplate: '<span></span>',//上传文件的进度信息
 		// 事件监听
 		onUploadSuccess: function(file, data) {

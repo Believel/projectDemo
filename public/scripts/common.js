@@ -29,7 +29,7 @@ define(function (require, exports, module) {
 			// 获取地址信息
 			pathname = location.pathname;
 
-			console.log(pathname,href);
+			// console.log(pathname,href);
 
 		if(pathname.lastIndexOf(href) == 1) {
 			// 添加选中状态

@@ -5,11 +5,38 @@
  var csModel = require('../models/course') //课程数据表
  var tcModel = require('../models/teacher') //讲师数据表
 var common = require('../utils/common');//自己封装的改变json数据格式的方法
+ 
+
+var path = require('path');
+
+var rootPath = path.join(__dirname, '../');
+
+// 上传文件
+var multer = require('multer');
+
+var storage = multer.diskStorage({
+	destination: function (req, file, cb) {
+		cb(null, rootPath + 'uploads/original');
+	},
+	filename: function (req, file, cb) {
+
+		var originalname = file.originalname;
+
+		var fileName = originalname.slice(0, originalname.lastIndexOf('.'))
+		var fileExt = originalname.slice(originalname.lastIndexOf('.'));
+
+		cb(null, fileName + '-' + Date.now() + fileExt);
+	}
+})
+ 
+var upload = multer({ storage: storage });
  // 引入创建子路由的中间件
 var router = express.Router();
 
+
 //暴露路由出去
-module.exports = router;
+module.exports = router; 
+
 
 // 设计路由
 router.get('/add',function(req,res){
@@ -77,19 +104,19 @@ router.get('/basic/:cs_id',function(req,res){
 //提交课程基本信息路由
 router.post('/basic',function(req,res){
 		var cs_id = req.body.cs_id;
-	csModel.update(req.body, function (err, result) {
+	 csModel.update(req.body, function (err, result) {
 		if(err) console.log(err);
 
 		res.json({
 			code: 10000,
 			msg: '添加成功',
 			result: {
-				cs_id: cs_id
+				cs_id:cs_id
 			}
 		});
 	});
 })
-//获得子分类路由
+//在基本的课程信息中——获得子分类路由
 router.post('/getChild',function(req,res){
 	var cg_id = req.body.cg_id;
 
@@ -103,14 +130,43 @@ router.post('/getChild',function(req,res){
 	})
 })
 //添加封面图的路由——step2
-router.get('/picture/:cs_id',function(req,res){
+router.get('/picture/:cs_id',function(req, res){
+	// 获得课程的id
 	var cs_id = req.params.cs_id;
+	// console.log(cs_id);
 	csModel.find(cs_id,function(err,result){
-		if(err) result;
-		res.render('courses/picture',result[0]);
+		if(err) return;
+		//查询老师的姓名
+		var tc_id = result[0]['cs_tc_id'];
+		tcModel.find(tc_id,function(err, row){
+			if(err) return;
+			res.render('courses/picture',{course:result[0],teacher:row[0]});
+		})
+		
 	})
 	
 })
+// 上传文件——课程封面
+router.post('/upfile', upload.single('upfile'), function (req, res) {
+
+	// 将原始图片也要存入数据
+	// 方便下次用户修改
+	
+	// console.log(req.file);
+	// 字段数据
+	var body = {
+		cs_cover_original: req.file.filename,
+		cs_id: req.body.cs_id
+	}
+
+	// 存入数据库
+	csModel.update(body, function (err, result) {
+		if(err) return;
+
+		res.json(req.file);		
+	});
+
+});
 //课程列表路由
 router.get('/list',function(req,res){
 	res.render('courses/course_list')
@@ -118,7 +174,7 @@ router.get('/list',function(req,res){
 // 分类列表路由
 router.get('/category',function(req,res){
 	// 显示所有的分类列表
-	cgModal.list(function(err,result){
+	cgModel.list(function(err,result){
 		if(err) return;
 		var tree = common.getTree(result,0);
 		res.render('courses/course_category',{categorys:tree})
@@ -127,7 +183,7 @@ router.get('/category',function(req,res){
 }) 
 router.get('/category/add',function(req,res){
 	//按顶级取分类
-	cgModal.show(function(err,result) {
+	cgModel.show(function(err,result) {
 		if(err) return;
 		// console.log(result);//返回的是对应数据表中的查询数据对象-顶级分类
 		res.render('courses/course_category_add',{categorys:result}) 
@@ -137,7 +193,7 @@ router.get('/category/add',function(req,res){
 router.post('/category/add',function(req,res){
 	
 	// console.log(req.body)
-	cgModal.add(req.body,function(err,result){
+	cgModel.add(req.body,function(err,result){
 		if(err) return;
 		//返回信息给前端
 		res.json({
@@ -150,7 +206,7 @@ router.post('/category/add',function(req,res){
 router.post('/category/update',function(req,res){
 	
 	console.log(req.body.cg_id)
-	cgModal.update(req.body,function(err,result){
+	cgModel.update(req.body,function(err,result){
 		if(err) return;
 		//返回信息给前端
 		res.json({
@@ -166,10 +222,10 @@ router.get('/category/edit/:cg_id',function(req,res){
 
 	var cg_id = req.params.cg_id;
 	//编辑分类
-	cgModal.show(function(err,all) {
+	cgModel.show(function(err,all) {
 		if(err) return;
 
-		cgModal.find(cg_id,function(err,child){
+		cgModel.find(cg_id,function(err,child){
 		if(err) return;
 		res.render('courses/course_category_add',{categorys:all,child:child[0]}) 
 	  });

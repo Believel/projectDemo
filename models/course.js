@@ -12,7 +12,7 @@ exports.find = function(cs_id,callback){
 	var query = 'SELECT * FROM `course` WHERE `cs_id`='+cs_id;
 	db.query(query,callback);
 }
-
+ 
 // 修改课程信息
 exports.update = function(body,callback){
 	var cs_id = body.cs_id;
