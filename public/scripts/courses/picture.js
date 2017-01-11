@@ -5,7 +5,7 @@ define(function(require, exports, module){
 	require('Jcrop');//jquery的图片裁剪插件的引入
 	var preview = $('.preview img');
 
-
+ 
 	// 图片上传
 	$('#upfile').uploadify({
 		width: '85px',
@@ -24,6 +24,12 @@ define(function(require, exports, module){
 			var data = JSON.parse(data); // 转化为对象
 			// 预览图片
 			preview.attr('src', '/original/' + data.filename);	
+
+			// 裁剪图片
+			preview.Jcrop({
+				boxWidth: 400, //最大盒子的宽度
+				aspectRatio: 2 //限制宽高的比例关系	
+			});
 		}
 	});
 

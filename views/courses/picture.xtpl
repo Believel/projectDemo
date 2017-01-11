@@ -1,4 +1,7 @@
 {{extend ('../layout/main')}}
+{{#block ('style')}}
+	<link rel="stylesheet" href="/assets/Jcrop/css/Jcrop.css">
+{{/block}}
 {{#block ('content')}}
 	<div class="body course-add">
 					<!-- 面包屑 -->
