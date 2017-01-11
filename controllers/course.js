@@ -4,6 +4,7 @@
  var cgModel = require('../models/category') //课程分类数据表
  var csModel = require('../models/course') //课程数据表
  var tcModel = require('../models/teacher') //讲师数据表
+ 
 var common = require('../utils/common');//自己封装的改变json数据格式的方法
  
 
@@ -230,4 +231,41 @@ router.get('/category/edit/:cg_id',function(req,res){
 		res.render('courses/course_category_add',{categorys:all,child:child[0]}) 
 	  });
 	});
+})
+
+// 裁剪路由
+router.post('/crop',function(req,res){
+	// console.log(req.body);
+	var x = req.body.x;
+	var y= req.body.y;
+	var w = req.body.w;
+	var h = req.body.h;
+	var filename = req.body.cs_cover_original;
+	
+	// 接收参数
+	// 调用裁切工具
+	// 将裁切好的图片存到数据库
+	// 
+	common.crop(x, y, w, h, filename,function(file){
+		// 裁切完成后入库拼凑参数
+		var body = {
+			cs_cover: file,//新的图片名
+			cs_id: req.body.cs_id
+		}
+
+		csModel.update(body,function(err, result){
+			if(err) return;
+			res.json({
+				code:10000,
+				msg:'裁切成功',
+				result:{
+					cs_id: req.body.cs_id //返回前台cs_id进行“课时”模块的完成
+				}
+			})
+		})
+		
+		
+
+	});
+
 })

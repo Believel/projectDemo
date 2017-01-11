@@ -39,12 +39,24 @@ define(function(require, exports, module){
  	})
  	// 点击裁剪图片的按钮，提交表单（x,y,w,h）到后台
  	$('#cutBtn').on('click',function(){
-
+ 		// 按钮有两种功能，一是调用选区，二是提交数据到后台
+ 		var status = $(this).attr('data-status');
+ 		if(status === 'cut'){
+ 			//点击裁剪按钮的时候，调用裁剪选区方法
+ 		    imgJcrop();
+ 		    $(this).val('保存图片');
+ 		    $(this).attr('data-status', 'save');
+			return;
+ 		}
+ 		
  		$('#coordsForm').ajaxSubmit({
- 			url:'',
+ 			url:'/course/crop',
  			type:'post',
  			success:function(data){
- 				// 
+ 				alert(data.msg)
+ 				if(data.code === 10000){
+ 					location.href = '/course/lesson/' + data.result.cs_id;
+ 				}
  			}
 
  		})
@@ -70,9 +82,12 @@ define(function(require, exports, module){
 			var data = JSON.parse(data); // 转化为对象
 			// 预览图片
 			preview.attr('src', '/original/' + data.filename);	
+			// 图片上传成功之后,将图片的名字存入表单中
+			$('#cover').val(data.filename);
 
-			//图片上传成功之后，让裁剪按钮变为可控
+			//图片上传成功之后，改变裁剪按钮的状态
 			$('#cutBtn').prop('disabled',false);
+			$('#cutBtn').val('保存图片').attr('data-status', 'save');
 
 			// 裁剪图片函数调用
 			imgJcrop();

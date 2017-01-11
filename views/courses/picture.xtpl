@@ -13,7 +13,7 @@
 						<!-- 摘要 -->
 						<div class="brief">
 							<div class="thumb">
-								<img src="{{course.cs_cover}}" alt="">
+								<img src="/thumbs/{{course.cs_cover}}" alt="">
 							</div>
 							<dl class="info">
 								<dt>{{course.cs_name}}</dt>
@@ -51,7 +51,7 @@
 							<!-- 上传图片 -->
 							<div class="picture col-md-offset-2">
 								<div class="preview">
-									<img src="{{course.cs_cover_original}}" alt="">
+									<img src="/original/{{course.cs_cover_original}}" alt="">
 								</div>
 								<p class="tips">
 									可上传jpg, gif, png格式文件, 图片建议尺寸大于300x150，文件大小不能超过2M。
@@ -60,9 +60,11 @@
 									<a href="javascript:;" id="upfile" class="btn btn-success btn-sm">选择图片</a>
 								</div>
 								<div class="col-md-2">
-								   <button class="btn btn-warning btn-sm" id="cutBtn" disabled>
-								    裁切图片
-								   </button>
+									{{#if (course.cs_cover_original)}}
+								   <input type="button" class="btn btn-warning btn-sm" id="cutBtn" data-status="cut" value=" 裁切图片">
+								   {{else}}
+								   <input type="button" class="btn btn-warning btn-sm" id="cutBtn" disabled value=" 裁切图片">
+								   {{/if}}
 								</div>
 								<form action="" id="coordsForm" style="display: none">
 									<!-- 存储选区中的坐标的值，传递给后台方便存储值的大小 -->
@@ -71,7 +73,8 @@
 									<input type="hidden" name="w" id="w">
 									<input type="hidden" name="h" id="h">
 									<!-- 隐藏域：为了方便拿到值 -->
-									<input type="hidden" id="csID" value="{{course.cs_id}}">
+									<input type="hidden" id="csID" value="{{course.cs_id}}" name="cs_id">
+									<input type="hidden" id="cover" name="cs_cover_original" value="{{course.cs_cover_original}}">
 								</form>
 							</div>
 						</div>
