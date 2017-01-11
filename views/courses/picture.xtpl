@@ -60,9 +60,17 @@
 									<a href="javascript:;" id="upfile" class="btn btn-success btn-sm">选择图片</a>
 								</div>
 								<div class="col-md-2">
-									<a href="javascript:;" class="btn btn-warning btn-sm" disabled>裁切图片</a>
+								   <button class="btn btn-warning btn-sm" id="cutBtn" disabled>
+								    裁切图片
+								   </button>
 								</div>
-								<form action="" style="display: none">
+								<form action="" id="coordsForm" style="display: none">
+									<!-- 存储选区中的坐标的值，传递给后台方便存储值的大小 -->
+									<input type="hidden" name="x" id="x">
+									<input type="hidden" name="y" id="y">
+									<input type="hidden" name="w" id="w">
+									<input type="hidden" name="h" id="h">
+									<!-- 隐藏域：为了方便拿到值 -->
 									<input type="hidden" id="csID" value="{{course.cs_id}}">
 								</form>
 							</div>

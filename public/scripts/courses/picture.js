@@ -6,6 +6,52 @@ define(function(require, exports, module){
 	var preview = $('.preview img');
 
  
+ 	function imgJcrop(){
+ 		//调用裁剪插件方法
+ 		preview.Jcrop({
+				boxWidth: 400, //最大盒子的宽度
+				aspectRatio: 2 //限制宽高的比例关系	
+			},function(){
+				// console.log(this);
+				var height = this.ui.stage.height; //图片的高度
+				var width = this.ui.stage.width; // 图片的宽度
+				var x, y, w, h;
+				x = 0;
+				w = width;
+				y = (height - width/2)/2;
+				h = width/2;
+
+				//插件实例化之后会调用回调函数，因此可以在回调函数中设置默认的情况，比如是提前选取就显示出来
+				this.newSelection();//声明设置选区
+				this.setSelect([x, y, w, h]);//设置选区，前两个参数是左上角坐标值，后两个参数是宽度和高度
+
+			});
+ 	}
+
+ 	// 给图片的父元素添加事件  cropmove cropend
+ 	preview.parent().on('cropmove cropend',function(selection, coords, c){
+
+ 		//拿到裁剪的位置值
+ 		$('#x').val(c.x);
+ 		$('#y').val(c.y);
+ 		$('#w').val(c.w);
+ 		$('#h').val(c.h);
+ 	})
+ 	// 点击裁剪图片的按钮，提交表单（x,y,w,h）到后台
+ 	$('#cutBtn').on('click',function(){
+
+ 		$('#coordsForm').ajaxSubmit({
+ 			url:'',
+ 			type:'post',
+ 			success:function(data){
+ 				// 
+ 			}
+
+ 		})
+ 		return false;
+
+
+ 	})
 	// 图片上传
 	$('#upfile').uploadify({
 		width: '85px',
@@ -25,11 +71,12 @@ define(function(require, exports, module){
 			// 预览图片
 			preview.attr('src', '/original/' + data.filename);	
 
-			// 裁剪图片
-			preview.Jcrop({
-				boxWidth: 400, //最大盒子的宽度
-				aspectRatio: 2 //限制宽高的比例关系	
-			});
+			//图片上传成功之后，让裁剪按钮变为可控
+			$('#cutBtn').prop('disabled',false);
+
+			// 裁剪图片函数调用
+			imgJcrop();
+			
 		}
 	});
 
