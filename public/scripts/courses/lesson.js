@@ -6,7 +6,7 @@ define(function(require, exports, module){
 	var lessonModal = $('#lessonModal');
 	$('#addLesson').on('click',function(){
 		var html = template('lessonTpl',{});
-		
+
 		//将表单元素追加
 		lessonModal.find('form').html(html);
 
@@ -24,7 +24,8 @@ define(function(require, exports, module){
 			url:'/course/lesson',
 			type:'post',
 			success:function(data){
-					//
+				//添加成功之后让模态框消失
+				lessonModal.modal('hide');
 			}
 		})
 

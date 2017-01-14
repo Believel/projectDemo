@@ -1,9 +1,10 @@
  var express = require('express');
 
  //加载分类数据模块
- var cgModel = require('../models/category') //课程分类数据表
- var csModel = require('../models/course') //课程数据表
- var tcModel = require('../models/teacher') //讲师数据表
+ var cgModel = require('../models/category') //课程分类数据表模型
+ var csModel = require('../models/course') //课程数据表模型
+ var tcModel = require('../models/teacher') //讲师数据表模型
+ var lsModel = require('../models/lesson') //课时数据表模型
  
 var common = require('../utils/common');//自己封装的改变json数据格式的方法
  
@@ -290,5 +291,21 @@ router.get('/lesson/:cs_id',function(req, res){
 })
 // 添加课时
 router.post('/lesson',function(req, res){
-	console.log(req.body)
+	// console.log(req.body);
+	var ls_minutes = req.body.ls_minutes;
+	var ls_seconds = req.body.ls_seconds;
+	req.body.ls_video_duration = ls_minutes + ':' + ls_seconds;
+
+	delete req.body.ls_minutes;
+	delete req.body.ls_seconds;
+	
+	lsModel.add(req.body, function(err, result){
+		if(err) return;
+		res.json({
+			code:10000,
+			msg:'添加课时成功',
+			result:{}
+		})
+ 	})
+
 })
