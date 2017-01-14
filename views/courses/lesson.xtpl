@@ -15,7 +15,7 @@
 						<dl class="info">
 							<dt>{{course.cs_name}}</dt>
 							<dd>讲师：{{teacher.tc_name}}</dd>
-							<dd>课时：32</dd>
+							<dd id="total">课时：{{lesson.length}}</dd>
 						</dl>
 					</div>
 					<!-- 步聚 -->
@@ -50,12 +50,13 @@
 							</a>
 						</div>
 						<div class="lessons">
-							<ul class="list-unstyled">
+							<ul class="list-unstyled" id="item">
+							  {{#each (lesson)}}
 								<li>
 									<i class="fa fa-file-video-o"></i>
-									<span class="order">课时：1</span>
-									<span class="name">Git工作原理</span>
-									<span class="duration">12:06</span>
+									<span class="order">课时：{{xindex + 1}}</span>
+									<span class="name">{{this.ls_name}}</span>
+									<span class="duration">{{this.ls_video_duration}}</span>
 									<!-- 操作 -->
 									<div class="action pull-right">
 										<a href="javascript:;" class="btn btn-info btn-xs" data-toggle="modal" data-target="#lesson">编辑</a>
@@ -63,6 +64,7 @@
 										<a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
 									</div>
 								</li>
+							  {{/each}}
 							</ul>
 						</div>
 					</div>
@@ -94,6 +96,21 @@
 {{/block}}
 
 {{#block ('template')}}
+<script type="text/template" id="lessonListTpl">
+	<!-- 新添加的课程列表的模板引擎 -->
+	<li>
+		<i class="fa fa-file-video-o"></i>
+		<span class="order">课时：<%= index%></span>
+		<span class="name"><%= lsName%></span>
+		<span class="duration"><%= lsDuration%></span>
+		<!-- 操作 -->
+		<div class="action pull-right">
+			<a href="javascript:;" class="btn btn-info btn-xs" data-toggle="modal" data-target="#lesson">编辑</a>
+			<a href="javascript:;" class="btn btn-info btn-xs">预览</a>
+			<a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
+		</div>
+	</li>
+</script>
 <script type="text/template" id="lessonTpl">
 	<input type="hidden" name="ls_cs_id" value="{{course.cs_id}}">	
 	<div class="form-group">

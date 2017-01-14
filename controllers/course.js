@@ -273,17 +273,26 @@ router.post('/crop',function(req,res){
 // 显示课时view
 router.get('/lesson/:cs_id',function(req, res){
 	// console.log(req.params.cs_id);//得到cs_id
-
+	var data = {};
 	var cs_id = req.params.cs_id;
+	// 查询课程信息
 	csModel.find(cs_id, function(err, result){
 		if(err) return;
+		data.course = result[0];
 		var tc_id = result[0]['cs_tc_id'];
+		// 查询讲师信息
 		tcModel.find('tc_id',function(err, rows){
 
 			if(err) return;
-			//渲染课时模板
-	        res.render('courses/lesson',{course:result[0],teacher:rows[0]});
-
+			data.teacher = rows[0];
+			// 查询课时信息
+			lsModel.find(cs_id, function(err, lessons){
+				if(err) return;
+				data.lesson = lessons;
+				// console.log(lessons) //可能有多个数组对象
+				//渲染课时模板
+	          res.render('courses/lesson',data);
+			})
 		})
 		
 
@@ -298,7 +307,7 @@ router.post('/lesson',function(req, res){
 
 	delete req.body.ls_minutes;
 	delete req.body.ls_seconds;
-	
+
 	lsModel.add(req.body, function(err, result){
 		if(err) return;
 		res.json({
