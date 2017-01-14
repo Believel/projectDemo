@@ -269,3 +269,26 @@ router.post('/crop',function(req,res){
 	});
 
 })
+// 显示课时view
+router.get('/lesson/:cs_id',function(req, res){
+	// console.log(req.params.cs_id);//得到cs_id
+
+	var cs_id = req.params.cs_id;
+	csModel.find(cs_id, function(err, result){
+		if(err) return;
+		var tc_id = result[0]['cs_tc_id'];
+		tcModel.find('tc_id',function(err, rows){
+
+			if(err) return;
+			//渲染课时模板
+	        res.render('courses/lesson',{course:result[0],teacher:rows[0]});
+
+		})
+		
+
+	})	
+})
+// 添加课时
+router.post('/lesson',function(req, res){
+	console.log(req.body)
+})

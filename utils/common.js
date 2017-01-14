@@ -1,9 +1,9 @@
 var fs = require('fs');
-var gm = require('gm');
+var gm = require('gm'); // 处理图片裁剪后的工具
 var path = require('path');
 
 var rootPath = path.join(__dirname, '../');
-console.log(rootPath);
+// console.log(rootPath);
 
 exports.getTree = getTree;
 

@@ -4,14 +4,19 @@ define(function(require, exports, module){
 	require('uploadify');//引入文件上传插件
 	require('Jcrop');//jquery的图片裁剪插件的引入
 	var preview = $('.preview img');
-
+    var jcrop_api;
  
  	function imgJcrop(){
+ 		if(jcrop_api){
+ 			jcrop_api.destroy();// 每次调用之前先销毁之前的图片
+ 		}
  		//调用裁剪插件方法
  		preview.Jcrop({
 				boxWidth: 400, //最大盒子的宽度
 				aspectRatio: 2 //限制宽高的比例关系	
 			},function(){
+
+				jcrop_api = this; 
 				// console.log(this);
 				var height = this.ui.stage.height; //图片的高度
 				var width = this.ui.stage.width; // 图片的宽度
@@ -24,6 +29,13 @@ define(function(require, exports, module){
 				//插件实例化之后会调用回调函数，因此可以在回调函数中设置默认的情况，比如是提前选取就显示出来
 				this.newSelection();//声明设置选区
 				this.setSelect([x, y, w, h]);//设置选区，前两个参数是左上角坐标值，后两个参数是宽度和高度
+
+				thumbnail = this.initComponent('Thumbnailer', { width: 240, height: 120, thumb: '.thumb' });// 加上缩略图
+
+			   $('.jcrop-thumb').css({
+	  				left: 0,
+	  				top: 0
+  			   })
 
 			});
  	}
