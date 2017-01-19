@@ -26,21 +26,20 @@ define(function(require, exports, module){
 	//模态框内的表单提交
 	// 利用HTMl5中新属性form属性实现表单提交
 	$('#AddLesson').on('submit',function(){
-
-		var key = $(this).attr('data-key');//获得保存按钮的按钮状态
-
-
-		var key = $(this).attr('data-key');
+		var key = save.attr('data-key');//获得保存按钮的按钮状
+		
 		var lsName = $('[name="ls_name"]').val();
 		var lsMinutes = $('[name="ls_minutes"]').val();
 		var lsSeconds = $('[name="ls_seconds"]').val();
 		var size = item.children().size() + 1;
-
+		
 		$(this).ajaxSubmit({
 
 			url:'/course/lesson',
 			type:'post',
 			success:function(data){
+				// console.log(data);
+				// alert(data.msg);
 				// 添加成功之后需要展示新数据
 				var info = {
 					index: size,
@@ -56,9 +55,10 @@ define(function(require, exports, module){
 					// 追加DOM
 					item.append(html);
 				}else{
+					
 					//替换
-					item.find('li').eq(key).find('span.name').text(lsName);
-					item.find('li').eq(key).find('span.duration').text(lsMinutes + ':' + lsSeconds);
+					item.find('li').eq(key).find('span.name').html(lsName);
+					item.find('li').eq(key).find('span.duration').html(lsMinutes + ':' + lsSeconds);
 					
 				}
 				

@@ -6,13 +6,14 @@ exports.add = function(body,callback){
 	delete body.ls_id;
 
 	if(ls_id){
-			
-		var query = 'UPDATE `lesson` SET ? `ls_id` ='+ ls_id;
+
+		var query = 'UPDATE `lesson` SET ? WHERE `ls_id`=' + ls_id;
 	}else{
 		var query = 'INSERT INTO `lesson` SET ?';
 	}
-
 	db.query(query, body, callback);
+	// var sql = db.query(query, body, callback);
+	// console.log(sql.sql);
 
 }
 
@@ -27,3 +28,4 @@ exports.show = function(ls_id, callback){
 	var query = 'SELECT * FROM `lesson` WHERE `ls_id`=' + ls_id;
 	db.query(query, callback);
 }
+

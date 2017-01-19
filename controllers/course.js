@@ -171,7 +171,13 @@ router.post('/upfile', upload.single('upfile'), function (req, res) {
 });
 //课程列表路由
 router.get('/list',function(req,res){
-	res.render('courses/course_list')
+	// 找到所有的课时信息
+	csModel.list(function(err, result){
+		if(err) return;
+		res.render('courses/course_list',{courses:result})
+
+	})
+	
 }) 
 // 分类列表路由
 router.get('/category',function(req,res){
@@ -309,7 +315,7 @@ router.post('/lesson',function(req, res){
 
 	delete req.body.ls_minutes;
 	delete req.body.ls_seconds;
-
+	// console.log(req.body);
 	lsModel.add(req.body, function(err, result){
 		if(err) return;
 		res.json({
@@ -318,6 +324,7 @@ router.post('/lesson',function(req, res){
 			result:{}
 		})
 	 })
+	// res.send('111')
 })
 //编辑课时
 router.post('/lesson/edit',function(req, res){

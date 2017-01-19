@@ -20,3 +20,10 @@ exports.update = function(body,callback){
 	var query = 'UPDATE `course` SET ? WHERE `cs_id` ='+ cs_id;
 	db.query(query,body,callback)
 }
+
+exports.list = function(callback){
+	// 可以通过连表查询将此课程下的讲师，分类，课时，用户
+	// 	// mysql 知识不够，只查询课程信息
+	var query = 'SELECT * FROM `course`';
+	db.query(query, callback);
+}
