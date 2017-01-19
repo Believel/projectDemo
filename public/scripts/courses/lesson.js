@@ -94,7 +94,7 @@ define(function(require, exports, module){
 				data:{ls_id: ls_id},
 				type:'post',
 				success:function(data){
-					console.log(data);
+					// console.log(data);
 					//时长要做处理
 					var ls_minutes = data.ls_video_duration.split(':')[0];
 					var ls_seconds = data.ls_video_duration.split(':')[1];
