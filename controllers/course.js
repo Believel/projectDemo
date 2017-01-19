@@ -301,6 +301,8 @@ router.get('/lesson/:cs_id',function(req, res){
 // 添加课时
 router.post('/lesson',function(req, res){
 	// console.log(req.body);
+	// 在后端处理如果是添加表单里面的ls_id值是空的，若是编辑的话表单里面的ls_id值是有值的
+	// 有ID(编辑)    无ID(添加)
 	var ls_minutes = req.body.ls_minutes;
 	var ls_seconds = req.body.ls_seconds;
 	req.body.ls_video_duration = ls_minutes + ':' + ls_seconds;
@@ -315,6 +317,19 @@ router.post('/lesson',function(req, res){
 			msg:'添加课时成功',
 			result:{}
 		})
- 	})
+	 })
+})
+//编辑课时
+router.post('/lesson/edit',function(req, res){
+
+	var ls_id = req.body.ls_id;
+	lsModel.show(ls_id, function(err, result) {
+		if(err) return;
+
+		// 返回前端数据
+		res.json(result[0]);
+
+		
+	});
 
 })

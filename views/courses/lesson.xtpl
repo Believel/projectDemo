@@ -52,16 +52,16 @@
 						<div class="lessons">
 							<ul class="list-unstyled" id="item">
 							  {{#each (lesson)}}
-								<li>
+								<li data-id="{{this.ls_id}}">
 									<i class="fa fa-file-video-o"></i>
 									<span class="order">课时：{{xindex + 1}}</span>
 									<span class="name">{{this.ls_name}}</span>
 									<span class="duration">{{this.ls_video_duration}}</span>
 									<!-- 操作 -->
-									<div class="action pull-right">
-										<a href="javascript:;" class="btn btn-info btn-xs" data-toggle="modal" data-target="#lesson">编辑</a>
-										<a href="javascript:;" class="btn btn-info btn-xs">预览</a>
-										<a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
+									<div class="action pull-right" >
+										<a href="javascript:;" class="btn btn-info btn-xs edit" data-toggle="modal" data-target="#lesson">编辑</a>
+										<a href="javascript:;" class="btn btn-info btn-xs preview" >预览</a>
+										<a href="javascript:;" class="btn btn-danger btn-xs delete">删除</a>
 									</div>
 								</li>
 							  {{/each}}
@@ -82,13 +82,13 @@
 					<h4 class="modal-title">添加课时</h4>
 				</div>
 				<div class="modal-body">
-					<form id="AddLesson" class="form-horizontal">
+					<form id="AddLesson" class="form-horizontal" action="">
 						
 					</form>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-link btn-sm" data-dismiss="modal">取消</button>
-					<button form="AddLesson" type="submit" class="btn btn-success btn-sm"> 添 加 </button>
+					<button form="AddLesson" type="submit" id="save" class="btn btn-success btn-sm"> 保 存 </button>
 				</div>
 			</div>
 		</div>
@@ -103,9 +103,9 @@
 		<span class="order">课时：<%= index%></span>
 		<span class="name"><%= lsName%></span>
 		<span class="duration"><%= lsDuration%></span>
-		<!-- 操作 -->
+		<!-- 操作 data-toggle="modal" data-target="#lesson" -->
 		<div class="action pull-right">
-			<a href="javascript:;" class="btn btn-info btn-xs" data-toggle="modal" data-target="#lesson">编辑</a>
+			<a href="javascript:;" class="btn btn-info btn-xs">编辑</a>
 			<a href="javascript:;" class="btn btn-info btn-xs">预览</a>
 			<a href="javascript:;" class="btn btn-danger btn-xs">删除</a>
 		</div>
@@ -113,15 +113,21 @@
 </script>
 <script type="text/template" id="lessonTpl">
 	<input type="hidden" name="ls_cs_id" value="{{course.cs_id}}">	
+	<!-- 方便做"编辑操作" -->
+	<input type="hidden" name="ls_id" value="<%=ls_id%>">
 	<div class="form-group">
 		<label for="" class="col-md-2 control-label">标题</label>
 		<div class="col-md-6">
-			<input type="text" class="form-control input-sm" name="ls_name">
+			<input type="text" class="form-control input-sm" name="ls_name" value="<%=ls_name%>">
 		</div>
 		<div class="col-md-2">
 			<div class="checkbox">
 				<label>
-					<input type="checkbox" name="ls_is_free"> 免费课时
+				<% if(ls_is_free){%>
+					<input type="checkbox" name="ls_is_free" checked> 免费课时
+				<%}else{%>
+	                <input type="checkbox" name="ls_is_free"> 免费课时
+				<%}%>
 				</label>
 			</div>
 		</div>
@@ -129,14 +135,14 @@
 	<div class="form-group">
 		<label for="" class="col-md-2 control-label">简介</label>
 		<div class="col-md-8">
-			<textarea name="ls_brief" rows="5" class="form-control input-sm"></textarea>
+			<textarea name="ls_brief" rows="5" class="form-control input-sm" value="<%=ls_brief%>"></textarea>
 		</div>
 	</div>
 	<div class="form-group">
 		<label for="" class="col-md-2 control-label">视频</label>
 		<div class="col-md-8">
 			<div class="input-group">
-				<input type="text" class="form-control input-sm" placeholder="支持优酷、土豆、腾讯、网易公开课的视频页面地址导入" name="ls_video">
+				<input type="text" class="form-control input-sm" placeholder="支持优酷、土豆、腾讯、网易公开课的视频页面地址导入" name="ls_video" value="<%= ls_video%>">
 				<span class="input-group-btn">
 					<button class="btn btn-success btn-sm">获取</button>
 				</span>
@@ -146,9 +152,9 @@
 	<div class="form-group form-inline">
 		<label for="" class="col-md-2 control-label">时长</label>
 		<div class="col-md-8">
-			<input type="text" class="form-control input-sm small" name="ls_minutes">
+			<input type="text" class="form-control input-sm small" name="ls_minutes" value="<%=ls_minutes%>">
 			分
-			<input type="text" class="form-control input-sm small" name="ls_seconds">
+			<input type="text" class="form-control input-sm small" name="ls_seconds" value="<%= ls_seconds%>">
 			秒
 			 <p class="help-block">时长必须为整数。</p>
 		</div>
@@ -156,7 +162,7 @@
 	<div class="form-group form-inline">
 		<label for="" class="col-md-2 control-label">建议学习时长</label>
 		<div class="col-md-8">
-			<input type="text" class="form-control input-sm small" name="ls_recommend_duration">
+			<input type="text" class="form-control input-sm small" name="ls_recommend_duration" value="<%=ls_recommend_duration%>">
 			小时
 			 <p class="help-block">（如未设置，则默认学习时长为视频时长3倍取整。）</p>
 		</div>
