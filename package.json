@@ -16,5 +16,12 @@
     "seajs": "^3.0.2",
     "xtemplate": "^4.6.0",
     "xtpl": "^3.3.0"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-seajs-concat": "^1.0.5",
+    "gulp-seajs-transport": "^0.4.0",
+    "gulp-uglify": "^2.0.0"
   }
 }

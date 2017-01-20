@@ -106,7 +106,7 @@
 {{#block ('script')}}
 	<script>
 
-		seajs.use('/scripts/courses/basic');
+		seajs.use('/{path}/courses/basic');
 		
 	</script>
 {{/block}}

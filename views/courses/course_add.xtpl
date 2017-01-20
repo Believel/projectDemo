@@ -33,7 +33,7 @@
 	{{#block ('script')}}
 	<script>
 
-		seajs.use('/scripts/courses/course_add.js');
+		seajs.use('/{path}/courses/course_add.js');
 		
 	</script>
 	{{/block}}

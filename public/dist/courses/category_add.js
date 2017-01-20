@@ -1,0 +1,1 @@
+define("/dist/courses/category_add",["jquery","form"],function(t,r,e){var o=t("jquery");t("form"),o("#addCategory").on("submit",function(){var t=o(this).attr("action").trim();return o(this).ajaxSubmit({url:t,type:"post",success:function(t){alert(t.msg),1e4===t.code&&(location.href="/course/category")}}),!1})});

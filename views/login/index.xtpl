@@ -27,6 +27,6 @@
 {{/block}}
 {{#block ('script')}}
 	<script>
-		seajs.use('/scripts/login/index')
+		seajs.use('/{path}/login/index')
 	</script>
 {{/block}}

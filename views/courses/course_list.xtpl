@@ -35,7 +35,11 @@
 					{{#each(courses)}}
 					<div class="course">
 						<div class="pic">
+							{{#if (this.cs_cover)}}
 							<img src="/thumbs/{{this.cs_cover}}" alt="">
+							{{else}}
+							<img src="/course.png" alt="">
+							{{/if}}
 						</div>
 						<div class="info">
 							<a href="/course/basic/{{this.cs_id}}">{{this.cs_name}}</a>

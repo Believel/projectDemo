@@ -15,6 +15,9 @@
 				arttemplate:'artTemplate/template-native.js',//前端的模板引擎
 				ckeditor:'ckeditor/ckeditor.js',//编辑器插件
 			},
+			vars: {
+				path:'dist'  //主要方便构建之后的修改路径文件夹
+			},
 			// 实现全局的模块提前加载
 			// 在使用use后才会执行
 			// 但是提前于use
