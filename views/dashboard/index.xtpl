@@ -35,14 +35,14 @@
 				</div>
 			</div>
 			<div class="chart">
-				<div id="main" style="width: 600px;height:400px;"></div>
+				<div id="main" style="width: 600px;height:400px;"></div> 
 			</div>
 		</div>
 	</div>
 {{/block}}
 {{#block ('script')}}
 	<script>
-		seajs.use()
+		seajs.use('/{path}/dashboard/index')
 	</script>
 {{/block}}
 

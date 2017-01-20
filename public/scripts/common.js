@@ -6,6 +6,8 @@ define(function (require, exports, module) {
 	NProgress.start();
 	NProgress.done();
 
+	
+
 	// 导航菜单
 	$('.navs a').on('click', function () {
 

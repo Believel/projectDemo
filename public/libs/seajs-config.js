@@ -14,6 +14,7 @@
 				language:'bootstrap-datepicker/js/bootstrap-datepicker.zh-CN.min.js',// 日历插件中文显示
 				arttemplate:'artTemplate/template-native.js',//前端的模板引擎
 				ckeditor:'ckeditor/ckeditor.js',//编辑器插件
+				echarts:'echarts/dist/echarts.js'
 			},
 			vars: {
 				path:'dist'  //主要方便构建之后的修改路径文件夹

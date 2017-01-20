@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "echarts": "^3.4.0",
     "express": "^4.14.0",
     "express-session": "^1.14.2",
     "multer": "^1.2.0",
